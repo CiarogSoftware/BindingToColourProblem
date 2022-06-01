@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BindingToColourProblem.MainPage"
+             xmlns:viewModels="clr-namespace:BindingToColourProblem.ViewModels"
+             x:DataType="viewModels:MainPageViewModel">
+
+    <StackLayout Spacing="5" Padding="10">
+        
+        <Border 
+            Stroke="Blue"
+            StrokeThickness="4"
+            StrokeShape="RoundRectangle 40,0,0,40"
+            Padding="16,8"
+            HorizontalOptions="FillAndExpand"
+            Margin="20,0,20,0">
+            <Border.Background>
+                
+                
+                <!-- This block works fine when uncommented -->
+                <!--<RadialGradientBrush>
+                    <GradientStop Color="WhiteSmoke"
+                                              Offset="0.8" />
+                    <GradientStop Color="#8ec274"
+                                              Offset="1.0" />
+                </RadialGradientBrush>-->
+                
+                <!-- 
+                    The below throws an unhandled exception 
+                    "System.Runtime.InteropServices.COMException (0x8000FFFF): Catastrophic failure (0x8000FFFF (E_UNEXPECTED))"
+                -->
+                <RadialGradientBrush>
+                    <GradientStop Color="WhiteSmoke"
+                                              Offset="0.8" />
+                    <GradientStop Color="{Binding MyGreenColor}"
+                                              Offset="1.0" />
+                </RadialGradientBrush>
+            </Border.Background>
+            <StackLayout>
+                <Label Text="First line" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Second line" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+        </Border>
+    </StackLayout>
+
+</ContentPage>
